@@ -1,0 +1,26 @@
+# TODO: add - HTTPS
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://vitan.com.co/$1 [R=301,L]
+#---------------------------------------------------
+
+# TODO: add
+# Modulos alternos
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # TODO: comentado
+    #RewriteRule ^ vitan.com.co/index.html [L]
+</IfModule>
